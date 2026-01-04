@@ -1,3 +1,67 @@
+// src/algorithms/graphLogic.js
+
+// --- Graph BFS (Breadth-First Search) ---
+// Maps to CodePanel: 1. function BFS, 4. while loop, 5. shift, 7. push
+export function* graphBFS(nodes, adjList, startNode = 0) {
+    let visited = new Set();
+    let queue = [startNode];
+    let step = 0;
+
+    // Line 1 & 2: Initialization
+    yield { items: [...queue], visited: [], currentNode: null, action: 'INIT_BFS', codeLine: 1, step: step++ };
+    visited.add(startNode);
+
+    while (queue.length > 0) {
+        // Line 4: while (queue.length > 0) - Highlight loop check
+        yield { items: [...queue], visited: Array.from(visited), action: 'CHECK_QUEUE', codeLine: 4, step: step++ };
+        
+        // Line 5: node = queue.shift()
+        let current = queue.shift();
+        yield { items: [...queue], visited: Array.from(visited), currentNode: current, action: 'VISIT_NODE', codeLine: 5, step: step++ };
+
+        for (let neighborObj of adjList[current] || []) {
+            let neighbor = neighborObj.node;
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                queue.push(neighbor); // Line 7: queue.push(...node.children)
+                yield { items: [...queue], visited: Array.from(visited), currentNode: current, action: 'PUSH_QUEUE', codeLine: 7, step: step++ };
+            }
+        }
+    }
+    // Line 10: End of function
+    yield { items: [], visited: Array.from(visited), action: 'COMPLETE', codeLine: 10, step: step++ };
+}
+
+// --- Graph DFS (Depth-First Search) ---
+// Maps to CodePanel: 1. function DFS, 2. visit, 4. DFS(child)
+export function* graphDFS(nodes, adjList, startNode = 0) {
+    let visited = new Set();
+    let stack = [startNode];
+    let step = 0;
+
+    // Line 1: Function entry
+    yield { items: [...stack], visited: [], action: 'INIT_DFS', codeLine: 1, step: step++ };
+
+    while (stack.length > 0) {
+        let current = stack.pop();
+
+        if (!visited.has(current)) {
+            visited.add(current); // Line 2: visit(node)
+            yield { items: [...stack], visited: Array.from(visited), currentNode: current, action: 'VISIT_NODE', codeLine: 2, step: step++ };
+
+            const neighbors = adjList[current] || [];
+            for (let i = neighbors.length - 1; i >= 0; i--) {
+                let neighbor = neighbors[i].node;
+                if (!visited.has(neighbor)) {
+                    stack.push(neighbor); // Line 4: DFS(child) simulation
+                    yield { items: [...stack], visited: Array.from(visited), currentNode: current, action: 'PUSH_STACK', codeLine: 4, step: step++ };
+                }
+            }
+        }
+    }
+    yield { items: [], visited: Array.from(visited), action: 'COMPLETE', codeLine: 6, step: step++ };
+}
+
 export function* dijkstraLogic(nodes, adjList, startNode = 0, targetNode = 3) {
     let distances = {};
     let previous = {}; // Tracks the optimal path (parent node)

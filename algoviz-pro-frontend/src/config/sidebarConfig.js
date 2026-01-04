@@ -1,3 +1,5 @@
+// src/config/sidebarConfig.js
+
 export const sidebarMenu = [
   {
     title: "Sorting Algorithms",
@@ -12,7 +14,7 @@ export const sidebarMenu = [
   },
   {
     title: "Searching Algorithms",
-    icon: "🔍", // Proper magnifying glass icon as per theme
+    icon: "🔍",
     subMenu: [
       { name: "Linear Search", path: "/visualizer/linear-search" },
       { name: "Binary Search", path: "/visualizer/binary-search" }
@@ -27,6 +29,17 @@ export const sidebarMenu = [
     ]
   },
   {
+    title: "Graph Algorithms",
+    icon: "🕸️",
+    subMenu: [
+      // UNIQUE PATHS: Differentiates Graph logic from Tree logic
+      { name: "BFS (Graph)", path: "/visualizer/graph-bfs" },
+      { name: "DFS (Graph)", path: "/visualizer/graph-dfs" },
+      { name: "Dijkstra's Algorithm", path: "/visualizer/dijkstra" },
+      { name: "Kruskal's MST", path: "/visualizer/kruskal" }
+    ]
+  },
+  {
     title: "Linked List",
     icon: "🔗",
     subMenu: [
@@ -38,24 +51,22 @@ export const sidebarMenu = [
     title: "Stack",
     icon: "🥞",
     subMenu: [
-        { name: "Push & Pop Operations", path: "/visualizer/stack" }
+      { name: "Operations (LIFO)", path: "/visualizer/stack" }
     ]
   },
   {
     title: "Queue",
-    icon: "🚶🚶🚶",
+    icon: "🚶",
     subMenu: [
-        { name: "Enqueue & Dequeue", path: "/visualizer/queue" }
+      { name: "Operations (FIFO)", path: "/visualizer/queue" }
     ]
   },
   {
-        title: "Graph Algorithms",
-        icon: "🕸️",
-        subMenu: [
-            { name: "BFS Traversal", path: "/visualizer/bfs" },
-            { name: "DFS Traversal", path: "/visualizer/dfs" },
-            { name: "Dijkstra's Shortest Path", path: "/visualizer/dijkstra" },
-            { name: "Kruskal's MST", path: "/visualizer/kruskal" }
-        ]
-  },
+    title: "Priority Queue",
+    icon: "🔝",
+    subMenu: [
+        { name: "Min Heap", path: "/visualizer/min-heap" },
+        { name: "Max Heap", path: "/visualizer/max-heap" }
+    ]
+  }
 ];

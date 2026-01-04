@@ -15,14 +15,31 @@ const CATEGORIES = {
         { name: 'Linear Search', path: '/visualizer/linear-search', desc: 'Check every element sequentially.' },
         { name: 'Binary Search', path: '/visualizer/binary-search', desc: 'Optimized search for sorted datasets.' }
     ],
+    // ADDED: Heaps & Priority Queue Category
+    'Heaps & Priority Queue': [
+        { 
+            name: 'Min Heap', 
+            path: '/visualizer/min-heap', 
+            desc: 'A complete binary tree where the parent node is always smaller than its children.' 
+        },
+        { 
+            name: 'Max Heap', 
+            path: '/visualizer/max-heap', 
+            desc: 'A complete binary tree where the parent node is always larger than its children.' 
+        }
+    ],
     'Linear Data Structures': [
         { name: 'Linked List', path: '/visualizer/ll-insert', desc: 'Dynamic node-based linear structure.' },
         { name: 'Stack (LIFO)', path: '/visualizer/stack', desc: 'Last-In, First-Out element processing.' },
         { name: 'Queue (FIFO)', path: '/visualizer/queue', desc: 'First-In, First-Out sequence handling.' }
     ],
-    'Tree & Graph Traversals': [
+    'Tree Traversals': [
         { name: 'BFS Traversal', path: '/visualizer/bfs', desc: 'Breadth-First level-order exploration.' },
-        { name: 'DFS Traversal', path: '/visualizer/dfs', desc: 'Depth-First recursive path discovery.' },
+        { name: 'DFS Traversal', path: '/visualizer/dfs', desc: 'Depth-First recursive path discovery.' }
+    ],
+    'Graph Algorithms': [
+        { name: 'BFS (Graph)', path: '/visualizer/graph-bfs', desc: 'Graph exploration using a Queue and Visited Set.' },
+        { name: 'DFS (Graph)', path: '/visualizer/graph-dfs', desc: 'Graph exploration using a Stack and Visited Set.' },
         { name: 'Dijkstra', path: '/visualizer/dijkstra', desc: 'Shortest path algorithm for weighted graphs.' },
         { name: 'Kruskal', path: '/visualizer/kruskal', desc: 'Minimum Spanning Tree discovery.' }
     ],
@@ -31,7 +48,6 @@ const CATEGORIES = {
 const AlgorithmSelectionPage = () => {
     return (
         <div className="p-8 lg:p-12 w-full max-w-7xl mx-auto min-h-screen text-white">
-            {/* Animated Header Section */}
             <motion.header 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -73,7 +89,7 @@ const AlgorithmSelectionPage = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {algorithms.map((algo, aIdx) => (
+                        {algorithms.map((algo) => (
                             <motion.div
                                 key={algo.path}
                                 whileHover={{ y: -8, scale: 1.02 }}
