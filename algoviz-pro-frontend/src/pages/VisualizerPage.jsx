@@ -11,6 +11,7 @@ import StackVisualizer from '../components/StackVisualizer.jsx';
 import QueueVisualizer from '../components/QueueVisualizer.jsx';
 import GraphVisualizer from '../components/GraphVisualizer.jsx'; 
 import HeapVisualizer from '../components/HeapVisualizer.jsx';
+import HashingVisualizer from '../components/HashingVisualizer.jsx';
 
 // UI Panel Imports
 import CodePanel from '../components/CodePanel.jsx';
@@ -79,6 +80,10 @@ const VisualizerPage = () => {
         // 3. Search & Linear Data Structures
         if (searchingAlgos.includes(algoSlug)) return <SearchingVisualizer {...vizProps} />;
         if (linkedListAlgos.includes(algoSlug)) return <LinkedListVisualizer {...vizProps} />;
+
+        if (['hash-map', 'hash-set'].includes(algoSlug)) {
+        return <HashingVisualizer {...vizProps} />;
+        }
         
         // 4. Default: Sorting Visualizer (Bubble, Selection, Quick, Insertion)
         return <SortingVisualizer {...vizProps} />;

@@ -1,5 +1,3 @@
-// src/config/sidebarConfig.js
-
 export const sidebarMenu = [
   {
     title: "Sorting Algorithms",
@@ -32,11 +30,26 @@ export const sidebarMenu = [
     title: "Graph Algorithms",
     icon: "🕸️",
     subMenu: [
-      // UNIQUE PATHS: Differentiates Graph logic from Tree logic
       { name: "BFS (Graph)", path: "/visualizer/graph-bfs" },
       { name: "DFS (Graph)", path: "/visualizer/graph-dfs" },
       { name: "Dijkstra's Algorithm", path: "/visualizer/dijkstra" },
       { name: "Kruskal's MST", path: "/visualizer/kruskal" }
+    ]
+  },
+  {
+    title: "Priority Queue",
+    icon: "🔝",
+    subMenu: [
+        { name: "Min Heap", path: "/visualizer/min-heap" },
+        { name: "Max Heap", path: "/visualizer/max-heap" }
+    ]
+  },
+  {
+    title: "Hashing",
+    icon: "🧩",
+    subMenu: [
+        { name: "HashMap", path: "/visualizer/hash-map" },
+        { name: "HashSet", path: "/visualizer/hash-set" }
     ]
   },
   {
@@ -59,14 +72,6 @@ export const sidebarMenu = [
     icon: "🚶",
     subMenu: [
       { name: "Operations (FIFO)", path: "/visualizer/queue" }
-    ]
-  },
-  {
-    title: "Priority Queue",
-    icon: "🔝",
-    subMenu: [
-        { name: "Min Heap", path: "/visualizer/min-heap" },
-        { name: "Max Heap", path: "/visualizer/max-heap" }
     ]
   }
 ];

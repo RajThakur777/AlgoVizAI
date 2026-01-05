@@ -222,6 +222,24 @@ export const ALGO_CODE_DATABASE = {
         { number: 7, text: '  }' },
         { number: 8, text: '}' }
     ],
+    // Add to ALGO_CODE_DATABASE in CodePanel.jsx
+    // src/components/CodePanel.jsx
+
+'hash-map': [
+    { number: 1, text: 'function put(key, value) {' },
+    { number: 2, text: '  let hash = computeHash(key);' },
+    { number: 3, text: '  let index = hash % bucketArray.length;' },
+    { number: 4, text: '  bucketArray[index].add({key, value});' },
+    { number: 5, text: '}' }
+],
+'hash-set': [
+    { number: 1, text: 'function add(value) {' },
+    { number: 2, text: '  let hash = computeHash(value);' },
+    { number: 3, text: '  let index = hash % bucketArray.length;' },
+    { number: 4, text: '  if (bucketArray[index].contains(value)) return;' },
+    { number: 5, text: '  bucketArray[index].add(value);' },
+    { number: 6, text: '}' }
+],
 };
 
 const CodePanel = ({ highlightedLine, algoSlug }) => {

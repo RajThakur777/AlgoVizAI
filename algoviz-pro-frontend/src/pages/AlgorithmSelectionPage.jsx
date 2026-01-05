@@ -43,6 +43,19 @@ const CATEGORIES = {
         { name: 'Dijkstra', path: '/visualizer/dijkstra', desc: 'Shortest path algorithm for weighted graphs.' },
         { name: 'Kruskal', path: '/visualizer/kruskal', desc: 'Minimum Spanning Tree discovery.' }
     ],
+    // Inside CATEGORIES object in AlgorithmSelectionPage.jsx
+    'Hashing Algorithms': [
+    { 
+        name: 'HashMap', 
+        path: '/visualizer/hash-map', 
+        desc: 'Key-value pairs using a bucket array and chaining for collisions.' 
+    },
+    { 
+        name: 'HashSet', 
+        path: '/visualizer/hash-set', 
+        desc: 'Stores unique elements by computing their index via a hash function.' 
+    }
+    ],
 };
 
 const AlgorithmSelectionPage = () => {
