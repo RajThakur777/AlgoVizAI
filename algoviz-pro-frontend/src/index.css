@@ -1,114 +1,60 @@
 /* src/index.css */
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --primary: #6366f1;
+  --bg-deep: #020617; /* True Obsidian Black/Blue */
+  --glass: rgba(15, 23, 42, 0.6);
+  --border-white: rgba(255, 255, 255, 0.05);
+}
 
-/* 1. Global Viewport & Foundation */
 html, body {
-  /* Allows the entire webpage to be scrollable naturally */
   min-height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  background-color: #0f172a; /* Deep DSA Theme Base */
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-deep);
+  /* 🌌 Decorative radial nebula glows for depth */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(20, 184, 166, 0.1) 0, transparent 50%);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: white;
-  scroll-behavior: smooth; /* Enables smooth scrolling to anchor points */
-  overflow-x: hidden; /* Critical: Prevents horizontal 'sliding' or drift */
+  overflow-x: hidden;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Glassmorphism Panel Utility */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-white);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* 2. Professional Custom Scrollbars */
-/* Applied platform-wide for a consistent Dark DSA Theme look */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* 🕯️ Text Glow for the "Select Path" look */
+.text-glow-indigo {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.1);
+/* Interactive Card Glow Effect */
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.25);
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.4); /* Indigo semi-transparent */
-  border-radius: 10px;
-}
+/* Professional Custom Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.3); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.6); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(79, 70, 229, 0.7);
-}
-
-/* 3. Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* 4. Visualization Canvas Utilities */
-/* Ensures SVG containers remain properly aligned without internal scrollbars */
-svg {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  margin: auto;
-}
-
-/* 5. Form and Interactive States */
-input[type="range"] {
-  accent-color: #6366f1; /* Indigo-500 */
-  cursor: pointer;
-}
-
-/* Light-themed inputs specifically for high visibility in control bars */
-input[type="number"] {
-  background-color: #ffffff !important; /* Fixed: Prevents black-on-black bug */
-  color: #4338ca !important; /* Indigo-700 text for readability */
-  border: 1px solid #cbd5e1 !important;
-  padding: 0.5rem;
-  border-radius: 0.6rem;
+/* Fix: Visibility for number inputs */
+input[type="number"], input[type="text"] {
+  background-color: #ffffff !important;
+  color: #1e1b4b !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 0.75rem;
+  font-weight: 700;
   outline: none;
-  font-weight: 800;
-}
-
-input[type="number"]:focus {
-  border-color: #6366f1 !important;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-}
-
-/* 6. Static Sidebar Support Utility */
-/* Ensures internal sidebar navigation can scroll if it exceeds viewport height */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(99, 102, 241, 0.4) transparent;
-}
-
-/* 7. Design System Utilities */
-.visualizer-border {
-  border: 2px dashed rgba(148, 163, 184, 0.2);
-}
-
-.glass-effect {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* 8. Utility for the Fixed Sidebar Container */
-.sidebar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  z-index: 50;
 }

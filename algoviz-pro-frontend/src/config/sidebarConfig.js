@@ -73,5 +73,13 @@ export const sidebarMenu = [
     subMenu: [
       { name: "Operations (FIFO)", path: "/visualizer/queue" }
     ]
-  }
+  },
+  {
+    title: "Window Patterns",
+    icon: "🪟",
+    subMenu: [
+        { name: "Fixed Window", path: "/visualizer/sliding-window-fixed" },
+        { name: "Variable Window", path: "/visualizer/sliding-window-variable" }
+    ]
+  },
 ];

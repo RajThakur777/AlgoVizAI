@@ -1,7 +1,6 @@
 // src/components/AlgorithmCard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const AlgorithmCard = ({ name, path, description }) => {
     const navigate = useNavigate();
@@ -9,35 +8,43 @@ const AlgorithmCard = ({ name, path, description }) => {
     return (
         <div 
             onClick={() => navigate(path)}
-            className="glass-panel glass-card-hover group relative overflow-hidden rounded-2xl p-6 cursor-pointer h-full flex flex-col"
+            className="glass-panel relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer h-full flex flex-col transition-all duration-500 group active:scale-95"
+            style={{ 
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                // Base shadow
+                boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)'
+            }}
         >
-            {/* Decorative Background Glow */}
-            <div className="absolute -right-4 -top-4 w-24 h-24 bg-indigo-500/5 blur-2xl group-hover:bg-indigo-500/15 transition-colors rounded-full" />
-
-            {/* Icon & Category Tag */}
-            <div className="flex justify-between items-start mb-6">
-                <div className="p-3 bg-indigo-500/10 rounded-xl group-hover:bg-indigo-500/20 transition-all duration-300">
-                    <span className="text-2xl group-hover:scale-110 block transition-transform">💻</span>
-                </div>
-                <span className="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em] bg-white/5 px-2 py-1 rounded">
-                    Module
-                </span>
-            </div>
-
-            {/* Content */}
-            <h3 className="text-xl font-black text-white mb-3 group-hover:text-indigo-300 transition-colors tracking-tight">
-                {name}
-            </h3>
+            {/* Animated Glow Overlay on Hover/Click */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/0 to-teal-500/0 group-hover:from-indigo-600/10 group-hover:to-teal-500/10 transition-all duration-500" />
+            <div className="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500/5 blur-[80px] group-hover:bg-indigo-500/20 group-hover:blur-[100px] transition-all duration-700 rounded-full" />
             
-            <p className="text-sm text-gray-500 leading-relaxed mb-8 flex-1">
-                {description || "Explore the step-by-step logic, temporal complexity, and AI-powered insights for this algorithm."}
-            </p>
+            {/* Card Content */}
+            <div className="relative z-10 h-full flex flex-col">
+                <div className="flex justify-between items-start mb-10">
+                    <div className="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center border border-white/5 group-hover:border-indigo-500/30 group-hover:rotate-12 transition-all duration-500 shadow-xl shadow-indigo-500/5">
+                        <span className="text-3xl filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                            {name.toLowerCase().includes('sort') ? '📊' : 
+                             name.toLowerCase().includes('search') ? '🔍' : 
+                             name.toLowerCase().includes('graph') ? '🕸️' : '🧠'}
+                        </span>
+                    </div>
+                </div>
 
-            {/* CTA Button Component within Card */}
-            <div className="relative mt-auto">
-                <div className="flex items-center justify-between py-3 px-4 rounded-xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-transparent transition-all duration-300">
-                    <span className="text-[10px] font-black uppercase tracking-widest">Start Session</span>
-                    <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
+                <h3 className="text-3xl font-black text-white mb-4 tracking-tighter group-hover:text-glow-indigo transition-all">
+                    {name}
+                </h3>
+                <p className="text-gray-400 font-medium leading-relaxed mb-12 flex-1">
+                    {description}
+                </p>
+
+                <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between group-hover:border-indigo-500/20 transition-colors">
+                    <span className="text-[11px] font-black uppercase tracking-[0.3em] text-indigo-400 group-hover:text-white transition-all">
+                        Initialize Engine
+                    </span>
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-indigo-600 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all duration-300">
+                        <span className="text-white text-lg font-bold">→</span>
+                    </div>
                 </div>
             </div>
         </div>

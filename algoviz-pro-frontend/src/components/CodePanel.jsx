@@ -240,6 +240,24 @@ export const ALGO_CODE_DATABASE = {
     { number: 5, text: '  bucketArray[index].add(value);' },
     { number: 6, text: '}' }
 ],
+'sliding-window-fixed': [
+    { number: 1, text: 'function slidingWindow(arr, k) {' },
+    { number: 2, text: '  let currentSum = arr.slice(0, k).sum();' },
+    { number: 3, text: '  for (let i = k; i < n; i++) {' },
+    { number: 4, text: '    currentSum += arr[i] - arr[i-k];' },
+    { number: 5, text: '    maxSum = max(maxSum, currentSum);' },
+    { number: 6, text: '  }' },
+    { number: 7, text: '}' }
+],
+'sliding-window-variable': [
+    { number: 1, text: 'while (right < arr.length) {' },
+    { number: 2, text: '  currentSum += arr[right];' },
+    { number: 3, text: '  while (currentSum >= K) {' },
+    { number: 4, text: '    minLen = min(minLen, right - left + 1);' },
+    { number: 5, text: '    currentSum -= arr[left++];' },
+    { number: 6, text: '  }' },
+    { number: 7, text: '}' }
+],
 };
 
 const CodePanel = ({ highlightedLine, algoSlug }) => {
